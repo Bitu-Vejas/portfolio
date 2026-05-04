@@ -37,7 +37,7 @@ Kuriame individualius sprendimus: nuo paieškos variklių iki asmeninių debesų
 
 ## 📬 Kontaktai
 
-- El. paštas: `info@bitiuvėjas.lt`
+- El. paštas: `info@bituvejas.lt`
 - Pagrindinis tinklapis: [googliukas.lt](https://googliukas.lt)
 - GitHub: [Bitu-Vejas](https://github.com/Bitu-Vejas)
 
