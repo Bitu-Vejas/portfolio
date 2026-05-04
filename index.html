@@ -47,18 +47,8 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #7bc9ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        .logo p {
-            font-size: 0.85rem;
-            color: #8db5d6;
+        .logo img {
+            display: block;
         }
         .tagline {
             background: rgba(44, 110, 158, 0.2);
@@ -292,8 +282,7 @@
 <div class="container">
     <div class="header">
         <div class="logo">
-            <h1>MB Bitų vėjas</h1>
-            <p>skaitmeniniai sprendimai & inovacijos</p>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' width='280' height='55'%3E%3Cdefs%3E%3ClinearGradient id='textGrad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%237bc9ff'/%3E%3Cstop offset='100%25' style='stop-color:%23ffffff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='5' y='25' font-family='Courier New, monospace' font-weight='bold' font-size='18' fill='%234facfe'%3E1 0 1%3C/text%3E%3Ctext x='5' y='45' font-family='Courier New, monospace' font-weight='bold' font-size='18' fill='%2300f2fe'%3E0 1 0%3C/text%3E%3Cpath d='M70 20 Q80 15 90 20 Q100 25 110 20' stroke='%237bc9ff' stroke-width='2' fill='none' opacity='0.7'/%3E%3Cpath d='M65 40 Q80 35 95 40 Q110 45 125 40' stroke='%239bd4ff' stroke-width='1.5' fill='none' opacity='0.5'/%3E%3Ctext x='120' y='32' font-family='Segoe UI, Arial' font-weight='800' font-size='20' fill='url(%23textGrad)'%3EMB Bitų vėjas%3C/text%3E%3Ctext x='120' y='48' font-family='Segoe UI, Arial' font-weight='400' font-size='9' fill='%238db5d6'%3Eskaitmeniniai sprendimai%3C/text%3E%3C/svg%3E" alt="MB Bitų vėjas logo" style="height: 55px;">
         </div>
         <div class="tagline">
             <i class="fas fa-code-branch"></i> 15+ realių projektų + GitHub
@@ -315,7 +304,7 @@
         <div class="stat-item"><h3>GitHub</h3><p>open source kelias</p></div>
     </div>
 
-    <!-- GITHUB BLOKAS - čia tavo būsimas profilis -->
+    <!-- GITHUB BLOKAS -->
     <div class="github-section" id="githubBlock">
         <div class="github-flex">
             <div class="github-info">
@@ -349,11 +338,11 @@
 
 <script>
     // ==============================================
-    // 🔧 ĮRAŠYK SAVO GITHUB VARTOTOJO VARDĄ ČIA 🔧
-    const GITHUB_USERNAME = "Bitu-Vejas"; 
+    // Tavo GitHub vartotojo vardas
+    const GITHUB_USERNAME = "Bitu-Vejas";
     // ==============================================
 
-    // Projektų duomenys (15+ projektų)
+    // Projektų duomenys (16 projektų)
     const projects = [
         { name: "SearXNG", url: "https://search.googliukas.lt/", category: "Paieškos variklis", desc: "Privati, metamašinė agreguota paieškos sistema, pagrįsta SearXNG.", icon: "fa-search" },
         { name: "ONLYOFFICE Docs", url: "https://onlyoffice.lt/", category: "Bendradarbiavimas", desc: "Dokumentų redagavimo serveris su JWT apsauga, integracijai paruošta sistema.", icon: "fa-file-alt" },
@@ -393,34 +382,16 @@
         });
     }
 
-    // Dinaminis GitHub blokas – pakeičiamos nuorodos ir parodoma pagalba
+    // Dinaminis GitHub blokas
     function setupGitHubBlock() {
         const profileLink = `https://github.com/${GITHUB_USERNAME}`;
         const allGithubLinks = document.querySelectorAll('#githubProfileLink, #githubFooterLink');
         allGithubLinks.forEach(link => {
-            if (GITHUB_USERNAME && GITHUB_USERNAME !== "tavo_github") {
-                link.href = profileLink;
-            } else {
-                link.href = "https://github.com/signup";  // jei nepakeista, siunčia į registraciją
-                link.textContent = " Sukurti GitHub profilį";
-            }
+            link.href = profileLink;
         });
 
         const statsDiv = document.getElementById('githubStatsMsg');
-        if (GITHUB_USERNAME && GITHUB_USERNAME !== "tavo_github") {
-            statsDiv.innerHTML = `<i class="fab fa-github"></i> ${GITHUB_USERNAME} · <i class="fas fa-code-branch"></i> Kviečiame sekti repozitorijas · <i class="fas fa-star"></i> Open source kelionė prasideda!`;
-            // Pridedama papildoma nuoroda į demo repozitoriją (jei norėtum parodyti)
-            const ghSection = document.querySelector('.github-flex');
-            if (ghSection && !document.getElementById('ghDemoRepo')) {
-                const demoLink = document.createElement('div');
-                demoLink.id = 'ghDemoRepo';
-                demoLink.style.marginTop = '16px';
-                demoLink.innerHTML = `<a href="${profileLink}?tab=repositories" target="_blank" class="card-link" style="font-size:0.85rem;"><i class="fas fa-folder-open"></i> Peržiūrėti mano repozitorijas →</a>`;
-                document.querySelector('.github-section').appendChild(demoLink);
-            }
-        } else {
-            statsDiv.innerHTML = `<i class="fas fa-code"></i> Dar neturi GitHub? <a href="https://github.com/join" target="_blank" style="color:#7bc9ff;">Užsiregistruok čia</a> ir įrašyk savo vartotojo vardą į kintamąjį GITHUB_USERNAME.`;
-        }
+        statsDiv.innerHTML = `<i class="fab fa-github"></i> ${GITHUB_USERNAME} · <i class="fas fa-code-branch"></i> Kviečiame sekti repozitorijas · <i class="fas fa-star"></i> Open source kelionė prasideda!`;
     }
 
     // Metai autoriui
