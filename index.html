@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MB Bitų vėjas | Projektų portfelis + GitHub</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 20, 40, 1) 0%, rgba(0, 10, 20, 1) 100%);
+            color: #eef4ff;
+            line-height: 1.5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a1a2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c6e9e;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header {
+            padding: 32px 0 24px;
+            border-bottom: 1px solid rgba(100, 180, 250, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #7bc9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo p {
+            font-size: 0.85rem;
+            color: #8db5d6;
+        }
+        .tagline {
+            background: rgba(44, 110, 158, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(80, 160, 240, 0.4);
+        }
+        .tagline i {
+            margin-right: 8px;
+            color: #60b0ff;
+        }
+
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #f0f9ff, #8bcbff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 32px;
+            color: #cbdde9;
+        }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: #2c6e9e;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 160, 255, 0.2);
+        }
+        .btn-primary:hover {
+            background: #1f8ad0;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 160, 255, 0.3);
+        }
+        .btn-outline {
+            border-color: #5faee3;
+            color: #cde5ff;
+        }
+        .btn-outline:hover {
+            background: rgba(95, 174, 227, 0.1);
+            transform: translateY(-3px);
+        }
+        .btn-github {
+            background: #24292e;
+            border-color: #6e7b8c;
+        }
+        .btn-github:hover {
+            background: #3b434b;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin: 50px 0 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #6eb0e6;
+        }
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 48px 0 32px;
+            font-weight: 700;
+            border-left: 5px solid #2c6e9e;
+            padding-left: 20px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+        .project-card {
+            background: rgba(10, 25, 40, 0.65);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 1px solid rgba(80, 150, 220, 0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #3e8ed0;
+            background: rgba(15, 35, 55, 0.85);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .project-icon {
+            font-size: 2.2rem;
+            color: #7bc9ff;
+        }
+        .category {
+            font-size: 0.7rem;
+            background: #1e3a5f;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .project-card p {
+            color: #cbdae7;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.45;
+        }
+        .card-link {
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #9acdff;
+            transition: 0.2s;
+        }
+        .card-link:hover {
+            gap: 12px;
+            color: white;
+        }
+
+        /* GitHub bloko stiliai */
+        .github-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 32px;
+            padding: 32px;
+            margin: 20px 0 20px;
+            border: 1px solid rgba(60, 110, 150, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .github-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .github-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .github-icon-big {
+            font-size: 2.8rem;
+            color: #ccc;
+        }
+        .github-text h3 {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+        }
+        .github-stats {
+            display: flex;
+            gap: 24px;
+            color: #bbd4f0;
+        }
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid rgba(100, 180, 250, 0.2);
+            padding: 40px 0 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .contact a {
+            color: #b8d6ff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+        .contact a:hover {
+            color: white;
+        }
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        @media (max-width: 700px) {
+            .hero h2 { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <h1>MB Bitų vėjas</h1>
+            <p>skaitmeniniai sprendimai & inovacijos</p>
+        </div>
+        <div class="tagline">
+            <i class="fas fa-code-branch"></i> 15+ realių projektų + GitHub
+        </div>
+    </div>
+
+    <div class="hero">
+        <h2>Kuriame skaitmeninę ateitį</h2>
+        <p>Pažvelkite į mūsų komandos sukurtus sprendimus – nuo paieškos variklių iki debesų platformų. Kiekvieno kodo pagrindas tvarkomas profesionaliai.</p>
+        <div class="btn-group">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Peržiūrėti darbus</a>
+            <a href="mailto:info@bitiuvėjas.lt" class="btn btn-outline"><i class="fas fa-envelope"></i> Susisiekti</a>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item"><h3>16</h3><p>projektų</p></div>
+        <div class="stat-item"><h3>5+</h3><p>tech stack</p></div>
+        <div class="stat-item"><h3>GitHub</h3><p>open source kelias</p></div>
+    </div>
+
+    <!-- GITHUB BLOKAS - čia tavo būsimas profilis -->
+    <div class="github-section" id="githubBlock">
+        <div class="github-flex">
+            <div class="github-info">
+                <i class="fab fa-github github-icon-big"></i>
+                <div class="github-text">
+                    <h3><i class="fab fa-github"></i> Bitų vėjas GitHub</h3>
+                    <p>Visi projektai versijuojami, kodas atviras (arba privatus) – demonstruojame inžinerinę kultūrą.</p>
+                </div>
+            </div>
+            <a href="#" id="githubProfileLink" target="_blank" class="btn btn-outline btn-github"><i class="fab fa-github"></i> GitHub profilis</a>
+        </div>
+        <div class="github-stats" id="githubStatsMsg">
+            <i class="fas fa-spinner fa-pulse"></i> Tikrinama GitHub integracija...
+        </div>
+    </div>
+
+    <h2 class="section-title" id="projects"><i class="fas fa-th-large"></i> Mūsų darbų portfelis</h2>
+    <div class="project-grid" id="projectGrid"></div>
+
+    <div class="footer">
+        <div class="contact">
+            <a href="mailto:info@bitiuvėjas.lt"><i class="fas fa-envelope"></i> info@bitiuvėjas.lt</a>
+            <a href="https://googliukas.lt" target="_blank"><i class="fas fa-globe"></i> googliukas.lt</a>
+            <a href="#" id="githubFooterLink" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+        <div class="copyright">
+            © <span id="currentYear"></span> MB Bitų vėjas – debesų tyrimai ir Web sprendimai
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==============================================
+    // 🔧 ĮRAŠYK SAVO GITHUB VARTOTOJO VARDĄ ČIA 🔧
+    const GITHUB_USERNAME = "Bitu-Vejas";  // <-- PAKEISTI Į SAVO VARDĄ
+    // ==============================================
+
+    // Projektų duomenys (15+ projektų)
+    const projects = [
+        { name: "SearXNG", url: "https://search.googliukas.lt/", category: "Paieškos variklis", desc: "Privati, metamašinė agreguota paieškos sistema, pagrįsta SearXNG.", icon: "fa-search" },
+        { name: "ONLYOFFICE Docs", url: "https://onlyoffice.lt/", category: "Bendradarbiavimas", desc: "Dokumentų redagavimo serveris su JWT apsauga, integracijai paruošta sistema.", icon: "fa-file-alt" },
+        { name: "Pastorale Nova", url: "https://pastoralenova.lt/", category: "Veislynas", desc: "Šunų veislynas nuo 2010 m. – tarptautiniai čempionai, meilė ir atsakomybė.", icon: "fa-paw" },
+        { name: "GoogleCloud.lt", url: "https://googlecloud.lt/", category: "Debesų tyrimai", desc: "Asmeninis debesų technologijų tyrimų poligonas – neoficiali, savarankiška platforma.", icon: "fa-cloud" },
+        { name: "Vėjo namai", url: "https://vejonamai.lt/", category: "Būsto portalas", desc: "Autentifikacijos sistema, modernus įėjimas į Vėjo namų aplinką.", icon: "fa-home" },
+        { name: "Bulanovai", url: "https://bulanovai.lt/", category: "Šeimos aplikacija", desc: "Privati paskyrų valdymo sistema, saugus prisijungimas.", icon: "fa-users" },
+        { name: "Andrijauskai", url: "https://andrijauskai.lt/", category: "Šeimos debesis", desc: "Asmeninė erdvė su prisijungimo mechanizmu.", icon: "fa-tree" },
+        { name: "Edveta namai", url: "https://namai.edveta.lt/", category: "NT valdymas", desc: "Būsto administravimo įrankis, debesies loginė sąsaja.", icon: "fa-building" },
+        { name: "Dikona", url: "https://dikona.lt/", category: "Nextcloud", desc: "Nextcloud diegimas – failų sinchronizacija ir saugus dalijimasis.", icon: "fa-cloud-upload-alt" },
+        { name: "Georaimonda debesys", url: "https://debesys.georaimonda.lt/", category: "Asmeninė deb. sistema", desc: "Pritaikytas debesų sprendimas individualiems poreikiams.", icon: "fa-database" },
+        { name: "Parketukas", url: "https://parketukas.lt/", category: "Prekyba / Paslaugos", desc: "Parketo ir grindų dangų sprendimų pristatymas.", icon: "fa-gripfire" },
+        { name: "Dipora", url: "https://dipora.lt/", category: "Korporatyvinis", desc: "Įmonės buvimas internete – reprezentacinė svetainė.", icon: "fa-briefcase" },
+        { name: "AI Googliukas", url: "https://ai.googliukas.lt/", category: "Dirbtinis intelektas", desc: "AI modelių demonstracija ir eksperimentai.", icon: "fa-microchip" },
+        { name: "Žemėlapiai", url: "https://zemelapiai.googliukas.lt/", category: "GIS / Žemėlapiai", desc: "Interaktyvi žemėlapių platforma, geografiniai duomenys.", icon: "fa-map-marked-alt" },
+        { name: "Googliukas pagrindinis", url: "https://googliukas.lt/", category: "Pagrindinis portalas", desc: "Centrinė Googliukas ekosistemos sąsaja ir naujienos.", icon: "fa-dove" }
+    ];
+
+    // Sukuria projekto korteles
+    const grid = document.getElementById('projectGrid');
+    if (grid) {
+        projects.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <i class="fas ${proj.icon} project-icon"></i>
+                    <span class="category">${proj.category}</span>
+                </div>
+                <h3>${proj.name}</h3>
+                <p>${proj.desc}</p>
+                <a href="${proj.url}" target="_blank" class="card-link">
+                    Peržiūrėti projektą <i class="fas fa-arrow-right"></i>
+                </a>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Dinaminis GitHub blokas – pakeičiamos nuorodos ir parodoma pagalba
+    function setupGitHubBlock() {
+        const profileLink = `https://github.com/${GITHUB_USERNAME}`;
+        const allGithubLinks = document.querySelectorAll('#githubProfileLink, #githubFooterLink');
+        allGithubLinks.forEach(link => {
+            if (GITHUB_USERNAME && GITHUB_USERNAME !== "tavo_github") {
+                link.href = profileLink;
+            } else {
+                link.href = "https://github.com/signup";  // jei nepakeista, siunčia į registraciją
+                link.textContent = " Sukurti GitHub profilį";
+            }
+        });
+
+        const statsDiv = document.getElementById('githubStatsMsg');
+        if (GITHUB_USERNAME && GITHUB_USERNAME !== "tavo_github") {
+            statsDiv.innerHTML = `<i class="fab fa-github"></i> ${GITHUB_USERNAME} · <i class="fas fa-code-branch"></i> Kviečiame sekti repozitorijas · <i class="fas fa-star"></i> Open source kelionė prasideda!`;
+            // Pridedama papildoma nuoroda į demo repozitoriją (jei norėtum parodyti)
+            const ghSection = document.querySelector('.github-flex');
+            if (ghSection && !document.getElementById('ghDemoRepo')) {
+                const demoLink = document.createElement('div');
+                demoLink.id = 'ghDemoRepo';
+                demoLink.style.marginTop = '16px';
+                demoLink.innerHTML = `<a href="${profileLink}?tab=repositories" target="_blank" class="card-link" style="font-size:0.85rem;"><i class="fas fa-folder-open"></i> Peržiūrėti mano repozitorijas →</a>`;
+                document.querySelector('.github-section').appendChild(demoLink);
+            }
+        } else {
+            statsDiv.innerHTML = `<i class="fas fa-code"></i> Dar neturi GitHub? <a href="https://github.com/join" target="_blank" style="color:#7bc9ff;">Užsiregistruok čia</a> ir įrašyk savo vartotojo vardą į kintamąjį GITHUB_USERNAME.`;
+        }
+    }
+
+    // Metai autoriui
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    setupGitHubBlock();
+</script>
+</body>
+</html>
