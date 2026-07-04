@@ -19,6 +19,7 @@
             background: radial-gradient(circle at 10% 20%, rgba(0, 20, 40, 1) 0%, rgba(0, 10, 20, 1) 100%);
             color: #eef4ff;
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
         ::-webkit-scrollbar {
@@ -36,6 +37,7 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 24px;
+            overflow-x: hidden;
         }
 
         .header {
@@ -50,11 +52,13 @@
         .logo {
             display: flex;
             align-items: center;
+            max-width: 100%;
         }
         .logo svg {
             display: block;
             height: 65px;
             width: auto;
+            max-width: 100%;
         }
         .tagline {
             background: rgba(44, 110, 158, 0.2);
@@ -64,6 +68,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid rgba(80, 160, 240, 0.4);
+            white-space: nowrap;
         }
         .tagline i {
             margin-right: 8px;
@@ -82,12 +87,14 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 20px;
+            word-break: break-word;
         }
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 32px;
             color: #cbdde9;
+            padding: 0 10px;
         }
         .btn-group {
             display: flex;
@@ -103,6 +110,7 @@
             text-decoration: none;
             transition: 0.25s ease;
             border: 1px solid transparent;
+            white-space: nowrap;
         }
         .btn-primary {
             background: #ab7a4e;
@@ -156,6 +164,7 @@
             font-weight: 700;
             border-left: 5px solid #ab7a4e;
             padding-left: 20px;
+            word-break: break-word;
         }
         .project-grid {
             display: grid;
@@ -171,6 +180,7 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+            word-break: break-word;
         }
         .project-card:hover {
             transform: translateY(-8px);
@@ -183,6 +193,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .project-icon {
             font-size: 2.2rem;
@@ -196,11 +208,13 @@
             font-weight: 600;
             letter-spacing: 0.3px;
             color: #ffeeb3;
+            white-space: nowrap;
         }
         .project-card h3 {
             font-size: 1.5rem;
             margin-bottom: 12px;
             font-weight: 700;
+            word-break: break-word;
         }
         .project-card p {
             color: #cbdae7;
@@ -216,6 +230,7 @@
             gap: 8px;
             color: #ffeeb3;
             transition: 0.2s;
+            word-break: break-word;
         }
         .card-link:hover {
             gap: 12px;
@@ -229,6 +244,7 @@
             margin: 20px 0 20px;
             border: 1px solid rgba(171, 122, 78, 0.4);
             backdrop-filter: blur(4px);
+            overflow: hidden;
         }
         .github-flex {
             display: flex;
@@ -242,19 +258,33 @@
             align-items: center;
             gap: 20px;
             flex-wrap: wrap;
+            flex: 1;
+            min-width: 200px;
         }
         .github-icon-big {
             font-size: 2.8rem;
             color: #ccc;
+            flex-shrink: 0;
+        }
+        .github-text {
+            flex: 1;
+            min-width: 150px;
         }
         .github-text h3 {
             font-size: 1.6rem;
             margin-bottom: 6px;
+            word-break: break-word;
+        }
+        .github-text p {
+            word-break: break-word;
         }
         .github-stats {
             display: flex;
             gap: 24px;
             color: #bbd4f0;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            word-break: break-word;
         }
         .footer {
             margin-top: 40px;
@@ -265,11 +295,16 @@
             flex-wrap: wrap;
             gap: 20px;
         }
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
         .contact a {
             color: #ffeeb3;
             text-decoration: none;
-            margin-right: 20px;
             font-size: 1.2rem;
+            white-space: nowrap;
         }
         .contact a:hover {
             color: white;
@@ -277,11 +312,108 @@
         .copyright {
             font-size: 0.8rem;
             opacity: 0.7;
+            word-break: break-word;
         }
+        
         @media (max-width: 700px) {
-            .hero h2 { font-size: 2rem; }
-            .container { padding: 0 16px; }
-            .section-title { font-size: 1.6rem; }
+            .container {
+                padding: 0 16px;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+                padding-left: 15px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .github-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .github-info {
+                width: 100%;
+            }
+            .github-text h3 {
+                font-size: 1.3rem;
+            }
+            .github-stats {
+                font-size: 0.9rem;
+                gap: 12px;
+            }
+            .btn {
+                white-space: normal;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .tagline {
+                font-size: 0.75rem;
+                white-space: normal;
+                padding: 6px 14px;
+            }
+            .logo svg {
+                height: 50px;
+            }
+            .stats {
+                gap: 24px;
+            }
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact {
+                justify-content: center;
+            }
+            .contact a {
+                font-size: 1rem;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .logo svg {
+                height: 45px;
+            }
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                justify-content: center;
+            }
+            .project-card {
+                padding: 1rem;
+            }
+            .github-section {
+                padding: 20px;
+            }
+            .github-icon-big {
+                font-size: 2rem;
+            }
+            .github-stats {
+                flex-direction: column;
+                gap: 6px;
+            }
         }
     </style>
 </head>
@@ -289,10 +421,8 @@
 <div class="container">
     <div class="header">
         <div class="logo">
-            <!-- Modernus, naujas inline SVG logotipas su parketukas.lt medžio/gintaro tonais, skaitmeniniais bitais ir vėjo sūkuriais -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 75" width="420" height="75">
                 <defs>
-                    <!-- Spalvų gradientai iš parketukas.lt paletės -->
                     <linearGradient id='woodGrad' x1='0%' y1='0%' x2='100%' y2='100%'>
                         <stop offset='0%' style='stop-color:#d4af37' />
                         <stop offset='60%' style='stop-color:#ab7a4e' />
@@ -304,17 +434,14 @@
                     </linearGradient>
                 </defs>
                 
-                <!-- Vėjo sūkurys (Wind Swirl) -->
                 <path d='M35 60 Q 20 40 40 25 T 65 15 Q 75 25 60 35 T 45 50 Q 55 60 70 45' fill='none' stroke='url(#woodGrad)' stroke-width='3.5' stroke-linecap='round' opacity='0.95'/>
                 <path d='M25 50 Q 15 30 35 15 T 58 8' fill='none' stroke='#ffeeb3' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/>
                 
-                <!-- Skaitmeniniai bitai / pikseliai (Digital Bits) -->
                 <rect x='15' y='18' width='6' height='6' fill='#d4af37' opacity='0.8' />
                 <rect x='23' y='12' width='5' height='5' fill='#ab7a4e' />
                 <rect x='10' y='27' width='5' height='5' fill='#ffeeb3' opacity='0.6' />
                 <rect x='28' y='22' width='6' height='6' fill='#784f2b' />
                 
-                <!-- Technologiniai mazgai / tinklas (Nodes / Network) -->
                 <circle cx='50' cy='28' r='3.5' fill='#d4af37' />
                 <circle cx='62' cy='40' r='3' fill='#ffeeb3' />
                 <circle cx='42' cy='45' r='4' fill='#ab7a4e' />
@@ -322,11 +449,9 @@
                 <line x1='50' y1='28' x2='42' y2='45' stroke='rgba(255,238,179,0.5)' stroke-width='1.5' />
                 <line x1='62' y1='40' x2='42' y2='45' stroke='rgba(255,238,179,0.5)' stroke-width='1.5' />
 
-                <!-- Dvejetainis kodas sūkuryje (Binary Code) -->
                 <text x='52' y='58' font-family='Courier New, monospace' font-weight='bold' font-size='9' fill='#d4af37' opacity='0.8'>1010</text>
                 <text x='32' y='10' font-family='Courier New, monospace' font-weight='bold' font-size='8' fill='#ffeeb3' opacity='0.7'>01</text>
                 
-                <!-- Tekstinė dalis -->
                 <text x='95' y='36' font-family='Inter, Segoe UI, Arial' font-weight='800' font-size='26' letter-spacing='0.5' fill='url(#textGrad)'>BITŲ VĖJAS</text>
                 <text x='97' y='56' font-family='Inter, Segoe UI, Arial' font-weight='600' font-size='12' letter-spacing='2' fill='#d4af37'>SKAITMENINIAI SPRENDIMAI</text>
             </svg>
@@ -351,7 +476,6 @@
         <div class="stat-item"><h3>GitHub</h3><p>open source kelias</p></div>
     </div>
 
-    <!-- GITHUB BLOKAS -->
     <div class="github-section" id="githubBlock">
         <div class="github-flex">
             <div class="github-info">
